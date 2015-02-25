@@ -14,3 +14,5 @@ libraryDependencies ++= Seq(
 )
 
 com.twitter.scrooge.ScroogeSBT.newSettings
+
+packageArchetype.java_application
