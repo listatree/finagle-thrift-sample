@@ -1,6 +1,6 @@
 import java.util.concurrent.atomic.AtomicInteger
 
-import com.twitter.conversions.time._
+import com.twitter.conversions.DurationOps._
 import com.twitter.finagle.Thrift
 import com.twitter.finagle.util.DefaultTimer
 import com.twitter.util.{Await, Duration, Future, Stopwatch}
@@ -14,7 +14,7 @@ object FinagleThriftClientSampleApp extends App {
   // Q: what may happened if the server is not started ? ... after using
   // and understanding better the code, try to add error handling for the
   // case that the server is not available
-  val client = Thrift.newIface[SampleService.FutureIface]("localhost:8080")
+  val client = Thrift.client.newIface[SampleService.FutureIface]("localhost:8080")
 
   // For having some fun, let's create a counter for tracing how many
   // requests we are performing. An atomic object is required to

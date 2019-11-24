@@ -1,16 +1,14 @@
-name := "finagle-thrift-client-sample"
+// import com.twitter.scrooge.ScroogeSBT
+import sbt.Keys.libraryDependencies
 
-version := "1.0.0"
+name := "quickstart-client"
 
-scalaVersion  := "2.10.4"
+version := "1.0"
+scalaVersion := "2.11.6"
 
-resolvers ++= Seq(
-  "Twitter repository" at "http://maven.twttr.com"
-)
+lazy val app = project.in(file("."))
+  .settings(
+    libraryDependencies += "com.twitter" %% "finagle-http" % "19.11.0",
+    libraryDependencies += "com.twitter" %% "finagle-thrift" % "19.11.0"
+  )
 
-libraryDependencies ++= Seq(
-    "com.twitter" 			%% "scrooge-core"    % "3.17.0",
-    "com.twitter"       %% "finagle-thrift"  % "6.24.0"
-)
-
-com.twitter.scrooge.ScroogeSBT.newSettings
